@@ -1,12 +1,1 @@
-In this code, the fetchOrders function is responsible for making an asynchronous request to the backend API to fetch the orders data. 
-It uses the fetch function provided by the Fetch API to initiate the request.
-
-Once the response is obtained, it checks if the response was successful (response.ok), and if not, it throws an error.
- Otherwise, it parses the response as JSON using response.json().
-
-The parsed orders data is then passed to the processOrders function for further processing or displaying in the UI. 
-You can modify the processOrders function according to your specific requirements.
-
-To ensure the data is not empty for 2 minutes, we schedule periodic updates using setInterval.
- The fetchOrders function will be called every 2 minutes (120,000 milliseconds) to fetch the latest orders data. 
- This way, the frontend will continuously update with new orders, preventing the data from being empty for an extended period.
+Q)How would you handle the scenario where it takes 2 minutes to fetch data from the backend to the frontend, specifically for a large number of orders, and ensure that the data is not empty for the entire 2-minute duration? Could you please provide an example code snippet in JavaScript to demonstrate your approach?
