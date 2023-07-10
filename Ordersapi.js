@@ -1,5 +1,8 @@
-// Function to fetch orders asynchronously
-async function fetchOrders() {
+import React, { useEffect } from 'react';
+
+function OrdersComponent() {
+  // Function to fetch orders asynchronously
+  const fetchOrders = async () => {
     try {
       // Make a request to the backend API
       const response = await fetch('/api/orders');
@@ -18,17 +21,38 @@ async function fetchOrders() {
       // Handle any errors that occur during the fetch
       console.error('Error fetching orders:', error);
     }
-  }
-  
+  };
+
   // Function to process the fetched orders
-  function processOrders(orders) {
+  const processOrders = (orders) => {
     // Display the orders in the UI or perform any necessary operations
     console.log('Fetched orders:', orders);
-  }
-  
-  // Fetch orders initially
-  fetchOrders();
-  
-  // Schedule periodic updates
-  setInterval(fetchOrders, 120000); // Fetch orders every 2 minutes
+  };
+
+  useEffect(() => {
+    // Fetch orders initially
+    fetchOrders();
+
+    // Schedule periodic updates
+    const interval = setInterval(fetchOrders, 120000); // Fetch orders every 2 minutes
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div>
+      {/* Render your component's UI here */}
+    </div>
+  );
+}
+
+export default OrdersComponent;
+
+
+
+
+
+
+
   
